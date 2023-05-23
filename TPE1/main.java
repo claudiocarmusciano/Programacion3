@@ -20,7 +20,7 @@ public class main {
         grafo.agregarArco(1, 6, 40);
         grafo.agregarArco(6, 7, 40);
         grafo.agregarArco(7, 5, 40);
-        // los tres siguientes los agregué para probar circuito infinito
+        // los tres siguientes los agreguamos para testear circuito infinito
         grafo.agregarArco(6, 3, 40);
         grafo.agregarArco(3, 2, 40);
         grafo.agregarArco(2, 1, 40);
@@ -90,9 +90,9 @@ public class main {
         bfsGrafo.imprimirBFSGrafo();
 
         System.out.println("-------------------------------");
-        int origen = 1;
+        int origen = 2;
         int destino = 5;
-        int limite = 10;
+        int limite = 4;
         System.out.println("Caminos posibles desde el vértice " + origen +
                 " hasta el vértice " + destino + " con un límite de " + limite + " arcos.");
 
