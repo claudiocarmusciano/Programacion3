@@ -1,16 +1,19 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ServicioBFS {
 
 	private Grafo<?> grafo;
 	private HashMap<Integer, Boolean> visitado;
+	private List<Integer> lista;
 
 	public ServicioBFS(Grafo<?> grafo) {
 		this.grafo = grafo;
 		this.visitado = new HashMap<>();
+		this.lista = new LinkedList<>();
 	}
 
 	public Iterator<Integer> ponerVisitadosFalse() {
@@ -33,7 +36,7 @@ public class ServicioBFS {
 				cola.addAll(BFS_VISIT(vertice));
 			}
 		}
-		return cola;
+		return lista;
 	}
 
 	public ArrayList<Integer> BFS_VISIT(Integer vertice) {
@@ -44,10 +47,12 @@ public class ServicioBFS {
 		// verticesVisitados
 		visitado.put(vertice, true);
 		verticesVisitados.add(vertice);
+		lista.add(vertice);
 
 		// Mientras haya vertices en la cola (verticesVisitados), retira al primero
 		while (!verticesVisitados.isEmpty()) {
-			int verticeActual = verticesVisitados.remove(0);
+			Integer verticeActual = verticesVisitados.get(0);
+			verticesVisitados.remove(verticeActual);
 
 			// Obtenemos los adyacentes de ese vertice, los iteramos, los marcamos como
 			// visitados y los agregamos a la cola (verticesVisitados)
@@ -57,6 +62,7 @@ public class ServicioBFS {
 				if (this.visitado.get(adyacente) == false) {
 					this.visitado.put(adyacente, true);
 					verticesVisitados.add(adyacente);
+					lista.add(adyacente);
 				}
 			}
 		}

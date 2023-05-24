@@ -11,6 +11,11 @@ public class GrafoDirigido<T> implements Grafo<T> {
         this.vertices = new HashMap<>();
     }
 
+    /*
+     * Complejidad método agregarVertice: O(1), dado que el método contieneVertice
+     * utiliza HashMap
+     * y éste está considerado con una complejidad O(1), y el put también es O(1)
+     */
     @Override
     public void agregarVertice(int verticeId) {
         // Verifico que no contenga ese vertice y lo agrego
@@ -19,6 +24,11 @@ public class GrafoDirigido<T> implements Grafo<T> {
         }
     }
 
+    /*
+     * Complejidad método borrarVertice: O(1), dado que el método contieneVertice
+     * utiliza HashMap
+     * y éste está considerado con una complejidad O(1), y el remove también es O(1)
+     */
     @Override
     public void borrarVertice(int verticeId) {
         // Si contiene el vértice lo borramos
@@ -37,6 +47,12 @@ public class GrafoDirigido<T> implements Grafo<T> {
         }
     }
 
+    /*
+     * Complejidad método agregarArco: O(1) dado que el método contieneVertice
+     * utiliza HashMap
+     * y éste está considerado con una complejidad O(1), y el add al hashMap
+     * vertices también es O(1)
+     */
     @Override
     public void agregarArco(int verticeId1, int verticeId2, T etiqueta) {
         // verificamos que existan ambos vertices y agregamos el arco
@@ -46,6 +62,12 @@ public class GrafoDirigido<T> implements Grafo<T> {
         }
     }
 
+    /*
+     * Complejidad método borrarArco: O(1) dado que el método contieneVertice
+     * utiliza HashMap
+     * y éste está considerado con una complejidad O(1), y el remove al hashMap
+     * vertices también es O(1)
+     */
     @Override
     public void borrarArco(int verticeId1, int verticeId2) {
         // verificamos que existan ambos vertices y borramos el arco
@@ -55,16 +77,29 @@ public class GrafoDirigido<T> implements Grafo<T> {
         }
     }
 
+    /*
+     * Complejidad del método contieneVertice: O(1), dado que el acceso a
+     * un key de hashMap es considerado O(1)
+     */
     @Override
     public boolean contieneVertice(int verticeId) {
         return (vertices.containsKey(verticeId));
     }
 
+    /*
+     * Complejidad del método existeArco: O(n), dado que
+     * el método utilizado dentro de éste (obtenerArco) es O(n).
+     */
     @Override
     public boolean existeArco(int verticeId1, int verticeId2) {
         return (obtenerArco(verticeId1, verticeId2) != null);
     }
 
+    /*
+     * Complejidad del método obtenerArco: O(n), dado que en el peor de los casos
+     * habrá
+     * que recorrer todos los arcos para encontrar el buscado.
+     */
     @Override
     public Arco<T> obtenerArco(int verticeId1, int verticeId2) {
         // Verificamos que existan ambos vértices
@@ -80,11 +115,19 @@ public class GrafoDirigido<T> implements Grafo<T> {
         return null;
     }
 
+    /*
+     * Complejidad del método cantidadVertices: O(1), dado que
+     * solamente retorna la medida (size) de un hashMap.
+     */
     @Override
     public int cantidadVertices() {
         return vertices.size();
     }
 
+    /*
+     * Complejidad del método cantidadArcos: O(n), dado que tiene
+     * que recorrer todos los vertices, y a su vez todos los arcos de éste.
+     */
     @Override
     public int cantidadArcos() {
         int arcos = 0;
@@ -95,12 +138,21 @@ public class GrafoDirigido<T> implements Grafo<T> {
         return arcos;
     }
 
+    /*
+     * Complejidad del método obtenerVertices: O(n), dado que tiene
+     * que recorrer todos los vertices del hashMap.
+     */
     @Override
     public Iterator<Integer> obtenerVertices() {
         Set<Integer> keysVertices = vertices.keySet();
         return keysVertices.iterator();
     }
 
+    /*
+     * Complejidad del método obtenerAdyacentes: O(n), dado que en el peor
+     * de los casos, el hashMap puede estar compuesto de un vertice y
+     * el resto todos adyacentes.
+     */
     @Override
     public Iterator<Integer> obtenerAdyacentes(int verticeId) {
         if (contieneVertice(verticeId)) {
@@ -110,6 +162,11 @@ public class GrafoDirigido<T> implements Grafo<T> {
         return null;
     }
 
+    /*
+     * Complejidad del método obtenerArcos: O(nˆ2), donde n es el número de
+     * vertices y, en el peor de los casos, todos los vertices pueden estar
+     * conectados entre todos.
+     */
     @Override
     public Iterator<Arco<T>> obtenerArcos() {
         // Creamos un ArrayList vacio para guardar los arcos
@@ -127,6 +184,11 @@ public class GrafoDirigido<T> implements Grafo<T> {
         return arcos.iterator();
     }
 
+    /*
+     * Complejidad del método obtenerArcos: O(n), dado que en el peor
+     * de los casos, el hashMap puede estar compuesto de un vertice y
+     * el resto todos adyacentes.
+     */
     @Override
     public Iterator<Arco<T>> obtenerArcos(int verticeId) {
         if (this.contieneVertice(verticeId)) {

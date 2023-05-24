@@ -12,18 +12,34 @@ public class main {
         grafo.agregarVertice(5);
         grafo.agregarVertice(6);
         grafo.agregarVertice(7);
+        grafo.agregarVertice(8);
+
+        // grafo.agregarArco(1, 2, 10);
+        // grafo.agregarArco(2, 4, 20);
+        // grafo.agregarArco(1, 3, 30);
+        // grafo.agregarArco(3, 5, 40);
+        // grafo.agregarArco(1, 6, 40);
+        // grafo.agregarArco(6, 7, 40);
+        // grafo.agregarArco(7, 5, 40);
+        // // los tres siguientes los agreguamos para testear circuito infinito
+        // grafo.agregarArco(6, 3, 40);
+        // grafo.agregarArco(3, 2, 40);
+        // grafo.agregarArco(2, 1, 40);
 
         grafo.agregarArco(1, 2, 10);
-        grafo.agregarArco(2, 4, 20);
-        grafo.agregarArco(1, 3, 30);
-        grafo.agregarArco(3, 5, 40);
-        grafo.agregarArco(1, 6, 40);
-        grafo.agregarArco(6, 7, 40);
-        grafo.agregarArco(7, 5, 40);
-        // los tres siguientes los agreguamos para testear circuito infinito
-        grafo.agregarArco(6, 3, 40);
-        grafo.agregarArco(3, 2, 40);
-        grafo.agregarArco(2, 1, 40);
+        grafo.agregarArco(1, 3, 20);
+        grafo.agregarArco(2, 4, 30);
+        grafo.agregarArco(4, 1, 40);
+        grafo.agregarArco(1, 5, 50);
+        grafo.agregarArco(2, 5, 60);
+        grafo.agregarArco(5, 4, 70);
+        grafo.agregarArco(3, 5, 80);
+        grafo.agregarArco(3, 6, 90);
+        grafo.agregarArco(6, 5, 100);
+        grafo.agregarArco(8, 5, 110);
+        grafo.agregarArco(7, 3, 120);
+        grafo.agregarArco(7, 6, 130);
+        grafo.agregarArco(7, 8, 140);
 
         ((GrafoDirigido<Integer>) grafo).imprimirGrafo();
 
@@ -80,19 +96,21 @@ public class main {
         System.out.println("-------------------------------");
         System.out.println("Grafo DFS:");
         ServicioDFS dfsGrafo = new ServicioDFS(grafo);
-        List<Integer> resultado = dfsGrafo.dfsForest();
-        dfsGrafo.imprimirDFSGrafo();
+        // List<Integer> resultado = dfsGrafo.dfsForest();
+        // dfsGrafo.imprimirDFSGrafo();
+        System.out.println(dfsGrafo.dfsForest().toString());
 
         System.out.println("-------------------------------");
         System.out.println("Grafo BFS:");
         ServicioBFS bfsGrafo = new ServicioBFS(grafo);
-        List<Integer> resultadoBFS = bfsGrafo.bfsForest();
-        bfsGrafo.imprimirBFSGrafo();
+        // List<Integer> resultadoBFS = bfsGrafo.bfsForest();
+        // bfsGrafo.imprimirBFSGrafo();
+        System.out.println(bfsGrafo.bfsForest().toString());
 
         System.out.println("-------------------------------");
-        int origen = 2;
+        int origen = 3;
         int destino = 5;
-        int limite = 4;
+        int limite = 5;
         System.out.println("Caminos posibles desde el vértice " + origen +
                 " hasta el vértice " + destino + " con un límite de " + limite + " arcos.");
 

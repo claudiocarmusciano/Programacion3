@@ -50,7 +50,7 @@ public class ServicioCaminos {
         }
 
         Iterator<Integer> ady = grafo.obtenerAdyacentes(vo);
-        while (ady.hasNext() && camino.size() <= lim) {
+        while (ady.hasNext()) {
             Integer ad = ady.next();
             // Obtengo el arco, controlo con el if que no este visitado y lo agrego
             Arco<?> arco = grafo.obtenerArco(vo, ad);
@@ -61,11 +61,15 @@ public class ServicioCaminos {
                 if (ad == destino) {
                     List<Integer> copiaCamino = new LinkedList<>(camino);
                     resultado.add(copiaCamino);
-                } else {
-                    camino(ad, destino, contador + 1);
                 }
+                camino(ad, destino, contador + 1);
                 camino.remove(camino.size() - 1);
                 arcosVisitados.remove(arco);
+            } else if (ad == destino) {
+                camino.add(ad);
+                List<Integer> copiaCamino = new LinkedList<>(camino);
+                resultado.add(copiaCamino);
+                camino.remove(camino.size() - 1);
             }
         }
     }
