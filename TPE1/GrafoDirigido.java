@@ -25,9 +25,9 @@ public class GrafoDirigido<T> implements Grafo<T> {
     }
 
     /*
-     * Complejidad método borrarVertice: O(1), dado que el método contieneVertice
-     * utiliza HashMap
-     * y éste está considerado con una complejidad O(1), y el remove también es O(1)
+     * Complejidad método borrarVertice: O(n), siendo n la cantidad de arcos a
+     * eliminar que
+     * se dirijen al vértice eliminado.
      */
     @Override
     public void borrarVertice(int verticeId) {
@@ -96,8 +96,8 @@ public class GrafoDirigido<T> implements Grafo<T> {
     }
 
     /*
-     * Complejidad del método obtenerArco: O(n), dado que en el peor de los casos
-     * habrá
+     * Complejidad del método obtenerArco: O(n), donde n son los arcos que contiene
+     * el grafo, y en el peor de los casos habrá
      * que recorrer todos los arcos para encontrar el buscado.
      */
     @Override
@@ -125,8 +125,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
     }
 
     /*
-     * Complejidad del método cantidadArcos: O(n), dado que tiene
-     * que recorrer todos los vertices, y a su vez todos los arcos de éste.
+     * Complejidad del método cantidadArcos: O(n), donde n son todos los vértices
      */
     @Override
     public int cantidadArcos() {
@@ -139,8 +138,8 @@ public class GrafoDirigido<T> implements Grafo<T> {
     }
 
     /*
-     * Complejidad del método obtenerVertices: O(n), dado que tiene
-     * que recorrer todos los vertices del hashMap.
+     * Complejidad del método obtenerVertices: O(1), dado que
+     * simplemente se instancia la clase iterator.
      */
     @Override
     public Iterator<Integer> obtenerVertices() {
@@ -149,9 +148,8 @@ public class GrafoDirigido<T> implements Grafo<T> {
     }
 
     /*
-     * Complejidad del método obtenerAdyacentes: O(n), dado que en el peor
-     * de los casos, el hashMap puede estar compuesto de un vertice y
-     * el resto todos adyacentes.
+     * Complejidad del método obtenerVertices: O(1), dado que
+     * simplemente se instancia la clase iterator.
      */
     @Override
     public Iterator<Integer> obtenerAdyacentes(int verticeId) {
@@ -185,9 +183,9 @@ public class GrafoDirigido<T> implements Grafo<T> {
     }
 
     /*
-     * Complejidad del método obtenerArcos: O(n), dado que en el peor
-     * de los casos, el hashMap puede estar compuesto de un vertice y
-     * el resto todos adyacentes.
+     * Complejidad del método obtenerArcos: O(1), dado que acceder a una clave es
+     * O(1)
+     * y simplemente se está instanciando un iterador.
      */
     @Override
     public Iterator<Arco<T>> obtenerArcos(int verticeId) {

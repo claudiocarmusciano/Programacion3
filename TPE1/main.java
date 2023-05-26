@@ -86,7 +86,7 @@ public class main {
         }
 
         System.out.println("-------------------------------");
-        System.out.print("Arcos del grafo: ");
+        System.out.println("Arcos del grafo: ");
         Iterator<Arco<Integer>> itA = grafo.obtenerArcos();
         while (itA.hasNext()) {
             Arco<Integer> a = itA.next();
