@@ -13,6 +13,7 @@ public class main {
         grafo.agregarVertice(6);
         grafo.agregarVertice(7);
         grafo.agregarVertice(8);
+        grafo.agregarVertice(9);
 
         // grafo.agregarArco(1, 2, 10);
         // grafo.agregarArco(2, 4, 20);
@@ -40,6 +41,7 @@ public class main {
         grafo.agregarArco(7, 3, 120);
         grafo.agregarArco(7, 6, 130);
         grafo.agregarArco(7, 8, 140);
+        grafo.agregarArco(5, 5, 140);
 
         ((GrafoDirigido<Integer>) grafo).imprimirGrafo();
 
@@ -108,9 +110,9 @@ public class main {
         System.out.println(bfsGrafo.bfsForest().toString());
 
         System.out.println("-------------------------------");
-        int origen = 3;
+        int origen = 2;
         int destino = 5;
-        int limite = 5;
+        int limite = 6;
         System.out.println("Caminos posibles desde el vértice " + origen +
                 " hasta el vértice " + destino + " con un límite de " + limite + " arcos.");
 

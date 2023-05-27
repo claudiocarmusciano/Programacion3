@@ -58,14 +58,19 @@ public class ServicioCaminos {
                 arcosVisitados.add(arco); // Agrego el arco a arcosVisitados
                 camino.add(ad); // Agrego el adyacente si el arco no esta visitado
 
-                if (ad == destino) {
+                if (ad == destino) { // Verificamos que el adyacente que estamos verificando sea igual al destino
+                                     // buscado
                     List<Integer> copiaCamino = new LinkedList<>(camino);
-                    resultado.add(copiaCamino);
+                    resultado.add(copiaCamino); // Lo agregamos a la copia del camino
                 }
-                camino(ad, destino, contador + 1);
+                camino(ad, destino, contador + 1); // ejecuta recursión sumando uno al contador
+                // Se dehacen los cambios realizados antes de pasar al próximo adyacente
                 camino.remove(camino.size() - 1);
                 arcosVisitados.remove(arco);
-            } else if (ad == destino) {
+            } else if (ad == destino && !arcosVisitados.contains(arco)) {
+                // Si el arco ya ha sido visitado pero el adyacente es el destino,
+                // se agrega el adyacente al camino actual pero sin marcar el arco como visitado
+                // nuevamente.
                 camino.add(ad);
                 List<Integer> copiaCamino = new LinkedList<>(camino);
                 resultado.add(copiaCamino);
